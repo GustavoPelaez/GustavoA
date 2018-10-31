@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<ui:composition lang="es"
+	  xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      template="/plantilla.xhtml">
+
+<ui:param name="tituloPagina" value="Consulta General" />
+<ui:param name="nombreEnPagina" value="Consulta General" />
+		<ui:define name="contenido">
+				
+	 		  <div class="row">
+			<h1>User: #{loginBean.miPersonaVo.nombre}</h1>
+			    
+			    <h:form id="form">
+				    
+					<p:growl id="msgs" showDetail="true" />
+ 
+					    <p:dataTable id="basicDT" var="car" value="#{dtSelectionView.cars1}">
+					        <f:facet name="header">
+					            Basic
+					        </f:facet>
+					        <p:column headerText="Id">
+					            <h:outputText value="#{car.id}" />
+					        </p:column>
+					        <p:column headerText="Year">
+					            <h:outputText value="#{car.year}" />
+					        </p:column>
+					        <p:column headerText="Brand">
+					            <h:outputText value="#{car.brand}" />
+					        </p:column>
+					        <p:column headerText="Color">
+					            <h:outputText value="#{car.color}" />
+					        </p:column>
+					        <p:column style="width:90px;text-align: center">
+					             <p:commandButton oncomplete="PF('carDialog').show()" icon="ui-icon-search" title="View">
+					                <f:setPropertyActionListener value="#{car}" target="#{dtSelectionView.selectedCar}" />
+					            </p:commandButton>
+					        </p:column>
+					    </p:dataTable>
+					 
+					
+					<br></br>
+					
+					<h:commandButton  value="Ejemplo Boton" />
+					<br></br>
+					<br></br>
+					<p:commandButton  value="Ejemplo Boton Prime" />	
+					<br></br>
+					<br></br>
+					<h:commandButton class="btn btn-default " value="Ejemplo Boton" />
+					<br></br>
+					<br></br>
+					<p:commandButton class="btn btn-default " value="Ejemplo Boton Prime" />		    		
+			    </h:form>
+			    
+			</div>
+		</ui:define>
+
+</ui:composition>

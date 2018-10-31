@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es"
+	  xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"> 
+	<head jsf:id="head">
+		<meta charset="utf-8" />
+		<title>Consulta</title>
+		<link rel="stylesheet" href="resources/css/materialize.min.css" />
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<meta http-equiv="X-UA-Conpatible" content="IE=edge"/>
+	</head>
+
+	<body>
+	
+		<header>
+			 <nav>
+			    <div class="nav-wrapper #4caf50 green">
+			      <a href="#!" class="brand-logo">AguacateCenter</a>
+			      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+			      <ul class="right hide-on-med-and-down">
+			        <li><a href="bienvenido.jsf">Inicio</a></li>
+			        <li><a href="registro.jsf">Registrar</a></li>
+			        <li><a href="RegistroProducto.jsf">Registrar Producto</a></li>
+			        <li><a href="#">Consultar</a></li>
+			        <li><a href="consulta_general.jsf">Consultar General</a></li>
+			        <li><a href="index.jsf">Salir</a></li>
+			      </ul>
+			      <ul class="side-nav" id="mobile-demo">
+			        <li><a href="bienvenido.jsf">Bienvenido</a></li>
+			       	<li><a href="registro.jsf">Registrar</a></li>
+			       	<li><a href="RegistroProducto.jsf">Registrar Producto</a></li>
+			        <li><a href="#">Consultar</a></li>
+			        <li><a href="consulta_general.jsf">Consultar General</a></li>
+			        <li><a href="index.jsf">Salir</a></li>
+			      </ul>
+			    </div>
+			  </nav>
+		</header>
+		<br/>
+
+<main>
+	<h5>#{usuarioBean.mensaje}</h5>
+	<form class="col s12"  jsf:id="formulario">
+		<section>
+			
+
+		<div class="container">	
+ 		  <div class="row">
+
+
+		      <div class="col s12">
+		
+		        <div class="card-panel ">
+		        	<h4>Registro de Usuario</h4>
+
+				          <div class="row">
+				          
+				            <div class="row col m6 offset-m7">
+				          
+				          	<div class="input-field col m6">
+				              <input jsf:id="txtDoc" id="documento" type="text" class="validate" jsf:value="#{usuarioBean.miPersonaVo.documento}"/>
+					          <label for="documento">Documentos</label>
+				         
+					        </div>			        
+						<div class="col m2 m6">
+							<h:commandButton class="btn btn-default " action="#{usuarioBean.consultarUsuario()}" value="Consultar" />
+					     </div>
+					     </div>
+					        <div class="input-field col m6">
+					          <input jsf:id="txtNomb" id="nombre" type="text" class="validate" jsf:value="#{usuarioBean.miPersonaVo.nombre}"/>
+					          <label for="nombre">Nombre</label>
+					        </div>
+
+					        <div class="input-field col m6">
+					          <input jsf:id="txtApellido" id="apellido" type="text" class="validate" jsf:value="#{usuarioBean.miPersonaVo.apellido}"/>
+					          <label for="apellido">Apellido</label>
+					        </div>	
+
+					        <div class="input-field col m6">
+					          <input jsf:id="txtProfesion" id="profesion" type="text" class="validate" jsf:value="#{usuarioBean.miPersonaVo.profesion}"/>
+					          <label for="profesion">Profesion</label>
+					        </div>	
+					        <div class="input-field col m6">
+					          <input jsf:id="txtSalario" id="salario" type="text" class="validate" jsf:value="#{usuarioBean.miPersonaVo.salario}"/>
+					          <label for="salario">Salario</label>
+					        </div>	
+
+					        <div class="input-field col m6">
+					          <input jsf:id="txtEdad" id="edad" type="text" class="validate" jsf:value="#{usuarioBean.miPersonaVo.edad}"/>
+					          <label for="edad">Edad</label>
+					        </div>
+
+					        <div class="input-field col m6">
+					          <input jsf:id="txtSexo" id="sexo" type="text" class="validate" jsf:value="#{usuarioBean.miPersonaVo.sexo}"/>
+					          <label for="sexo">Sexo</label>
+					        </div>
+					        
+					        <div class="col m6">
+					          	<h:commandButton class="btn btn-default " action="#{usuarioBean.actualizarUsuario()}" value="Actualizar" />
+					        </div>
+					        
+					        <div class="col m6">
+					          	<h:commandButton class="btn btn-default " action="#{usuarioBean.eliminarUsuario()}" value="Eliminar" />
+					        </div>
+							
+					    </div>
+		        </div>
+		 
+		      </div>
+		    </div>
+		</div>
+		
+		</section>
+		</form>
+</main>
+	 <footer class="page-footer #4caf50 green">
+              <div class="col l6 s12">
+				<p>Gustavo Adolfo Pelaez  2018 - Todos los derechos reservados</p>
+				</div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2018 Copyright Text
+            </div>
+          </div>
+        </footer>
+
+
+		<script src="resources/js/jquery.js"></script>
+		<script src="resources/js/materialize.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				  $(".button-collapse").sideNav();
+				   $('.modal').modal();
+			})
+
+		</script>
+	</body>
+<style>
+	  body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+
+	.perfil{
+		width: 90%;
+	}
+
+</style>
+</html>

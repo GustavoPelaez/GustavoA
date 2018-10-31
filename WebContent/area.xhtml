@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<head jsf:id="head">
+<meta charset="utf-8" />
+<title>Area</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet" />
+<link type="text/css" rel="stylesheet"
+	href="resources/css/materialize.min.css" media="screen,projection" />
+<link type="text/css" rel="stylesheet" href="resources/css/estilos.css" />
+<link rel="stylesheet" type="text/css" href="resources/css/font-awesome.css"></link>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, user-scalable=no"/>
+<meta http-equiv="X-UA-Conpatible" content="IE=edge" />
+</head>
+<body>
+
+
+
+
+ <div id="modal1" class="modal">
+ <h:form class="container">
+    <div class="modal-content">
+  <div class="container center-align "><H4>Registrar area</H4></div>
+   <div class="row">
+    
+      <div class="row">
+        <div class="input-field">
+          <label for="nombre">Nombre o numero</label>
+          <p></p>
+          <input placeholder="" id="nombre" type="text" class="validate" jsf:value="#{tablaArea.miArea.nombreArea}"/>
+        </div>
+      </div>-
+       <div class="row">
+        <div class="input-field">
+<h:selectOneMenu  value="#{tablaArea.miArea.tipoArea}" style="width: 155px;" >
+<f:selectItem itemValue="Ambiente" itemLabel="Ambiente"/>
+<f:selectItem itemValue="Pasillo" itemLabel="Pasillo"/>
+</h:selectOneMenu>
+        </div>
+      </div>
+
+  </div>
+    </div>
+    <div class="modal-footer">
+      <a jsf:actionListener="#{tablaArea.agregarArea()}" class="modal-action modal-close waves-effect waves-green btn-flat  teal lighten-1 white-text">Registrar</a>
+    </div>
+    
+    </h:form>
+  </div>
+
+	<div class="row">
+
+		
+		<div class="menu col s2">
+          <div id="scale-demo" class="card-panel  white lighten-1 z-depth-5" >
+            <div class="container ">
+            <div class="valign-wrapper"><a href="menuPrincipal.html" class=" accent-4 black-text"><img src="resources/css/S.I.E.jpg" /></a></div>
+    
+          </div>
+    
+            <a href="" class=" accent-4 black-text"><div class="valign-wrapper"><i class="medium material-icons push-s4 black-text">home</i>
+              <H6 class="right-align black-text">Inicio</H6> </div> </a>
+    
+            <a href="" class=" accent-4 black-text"><div class="valign-wrapper"><i class="medium material-icons push-s4 black-text">account_box</i>
+              <H6 class="right-align black-text">Usuarios</H6></div></a>
+      
+             <a href="" class=" accent-4 black-text"><div class="valign-wrapper"><i class="medium material-icons push-s4 black-text">account_balance</i>
+              <H6 class="right-align black-text">Areas</H6> </div> </a>
+      
+            <a href="" class=" accent-4 black-text"><div class="valign-wrapper"><i class="logobien medium material-icons push-s4 black-text">weekend</i>
+              <H6 class="right-align black-text">Bienes</H6></div></a>
+      
+            <a href="" class=" accent-4 black-text"><div class="valign-wrapper"><i class="medium material-icons push-s4 black-text">search</i>
+              <H6 class="right-align black-text">Consultas</H6> </div> </a>
+      
+            <a href="" class=" accent-4 black-text"><div class="valign-wrapper"><i class="medium material-icons push-s4 black-text">content_paste</i>
+              <H6 class="right-align black-text">Toma fisica</H6></div></a>
+      
+            <a href="" class=" accent-4 black-text"><div class="valign-wrapper"><i class="medium material-icons push-s4 black-text">assignment</i>
+              <H6 class="right-align black-text">Generar Novedades</H6></div></a>
+      
+            <a href="" class=" accent-4 black-text"><div class="valign-wrapper"><i class="medium material-icons push-s4 black-text">assignment_turned_in</i>
+              <H6 class="right-align black-text">Informes</H6> </div> </a>
+      
+          </div>
+        </div>
+		
+
+		 <div class="container col l12 s12">
+		 <div class="barra" style=""><img class="barra" src="resources/css/barra.png "/>
+            <div class=" darken-1 lightghten-1  right-align">
+           <div class="logousuario">
+           <a href="login.html"><i class="medium material-icons white-text">reply_all</i>
+            <div class="salida white-text"><p>Salir</p></div>
+           </a>
+        </div>
+           <div class="nombreusuario white-text">
+           <p><H5>Liliana Orrego</H5></p>
+           </div>
+            </div>  
+            </div> 
+    </div>
+
+
+		
+		 
+		<div class="tabla card panel col s10 offset-s2 z-depth-5"><H3>Areas<hr/></H3>
+		 <h:form>
+<div class="">
+  <a class="rigistrar waves-effect waves-light btn modal-trigger col s3 push-s9" href="#modal1">Registrar Area<i class="material-icons right">add</i></a>
+   </div>	
+</h:form>
+
+
+<h:form>
+
+
+<h:outputLabel value="#{TablaArea.msjDB}"/>
+<div class="container col s12">
+<div class="tabla" style="height: 480px; overflow: auto;">
+<h:dataTable   class="striped centered responsive-table z-depth-5" value="#{tablaArea.listaArea}" var="datos" >
+ <h:column>
+ <f:facet  name="header">
+ <h:outputLabel class="fijo" value="Codigo"/>
+ </f:facet>
+ <h:inputText  value="#{datos.codigoArea}" rendered="#{datos.editar}" />
+ <h:outputLabel value="#{datos.codigoArea}" rendered="#{not datos.editar}"/>
+ </h:column>
+<h:column>
+<f:facet name="header">
+<h:outputLabel class="fijo" value="Nombre o numero"/>
+</f:facet>
+<h:inputText value="#{datos.nombreArea}" rendered="#{datos.editar}" />
+<h:outputLabel value="#{datos.nombreArea}" rendered="#{not datos.editar}" />
+</h:column>
+<h:column>
+<f:facet name="header">
+<h:outputLabel class="fijo" value="Tipo"/>
+</f:facet>
+<h:selectOneMenu value="#{datos.tipoArea}" style="width: 155px;" rendered="#{datos.editar}" >
+<f:selectItem itemValue="Ambiente" itemLabel="Ambiente"/>
+<f:selectItem itemValue="Pasillo" itemLabel="Pasillo"/>
+</h:selectOneMenu>
+<h:outputLabel value="#{datos.tipoArea}" rendered="#{not datos.editar}" />
+</h:column>
+<h:column>
+<f:facet name="header">
+<h:outputLabel class="fijo" value="Acciones"/>
+</f:facet>
+<h:commandLink action="#{tablaArea.editarArea(datos)}" aria-hidden="true" rendered="#{not datos.editar}"><i class="material-icons s12">create</i></h:commandLink>
+<h:commandLink action="#{tablaArea.guardarArea(datos)}" aria-hidden="true" rendered="#{datos.editar}"><i class="material-icons s12">save</i></h:commandLink>
+<h:commandLink action="#{tablaArea.eliminarArea(datos)}" aria-hidden="true"><i class="material-icons s12">delete</i></h:commandLink>
+</h:column>
+</h:dataTable>
+</div>
+</div>
+		</h:form>
+		</div>
+
+	</div>
+	<script type="text/javascript" src="resources/js/jquery.js"></script>
+	<script type="text/javascript" src="resources/js/materialize.min.js"></script>
+	<script type="text/javascript">
+  $(document).ready(function() {
+    $('select').material_select();
+  }); 
+  </script>
+ <script type="text/javascript">
+         $(document).ready(function(){
+    $('.modal').modal();
+  });
+      </script>
+      <script type="text/javascript" id="mensage">var $toastContent = $('<span>I am toast content</span>'));
+    Materialize.toast($toastContent, 10000);</script>
+</body>
+</html>
